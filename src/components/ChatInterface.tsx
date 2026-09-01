@@ -20,8 +20,14 @@ export default function ChatInterface() {
   const [input, setInput] = useState('');
   const [isProcessing, setIsProcessing] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    const t = setTimeout(() => setIsLoading(false), 400);
+    return () => clearTimeout(t);
+  }, []);
 
   const scrollToBottom = useCallback(() => {
     if (scrollRef.current) {
@@ -101,9 +107,22 @@ export default function ChatInterface() {
 
             {/* Messages */}
             <div ref={scrollRef} className="h-[420px] space-y-4 overflow-y-auto bg-bg px-5 py-5" role="log" aria-label="PRISM conversation messages" aria-live="polite">
-              {messages.map((msg) => (
-                <ChatMessage key={msg.id} message={msg} onProductClick={handleProductClick} />
-              ))}
+              {isLoading ? (
+                <div className="flex items-start gap-3">
+                  <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center bg-primary/15">
+                    <div className="h-3 w-3 rounded-full bg-primary animate-pulse-dot" />
+                  </div>
+                  <div className="flex items-center gap-1 border border-border bg-surface px-4 py-3">
+                    <span className="h-2 w-1 rounded-full bg-primary animate-typing-bounce" style={{ animationDelay: '0s' }} />
+                    <span className="h-2 w-1 rounded-full bg-primary animate-typing-bounce" style={{ animationDelay: '0.15s' }} />
+                    <span className="h-2 w-1 rounded-full bg-primary animate-typing-bounce" style={{ animationDelay: '0.3s' }} />
+                  </div>
+                </div>
+              ) : (
+                messages.map((msg) => (
+                  <ChatMessage key={msg.id} message={msg} onProductClick={handleProductClick} />
+                ))
+              )}
             </div>
 
             {/* Suggested prompts */}

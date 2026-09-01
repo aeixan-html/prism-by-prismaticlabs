@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Allow: /privacy
+Allow: /terms
 
 Sitemap: https://prismbyprismaticlabs.vercel.app/sitemap.xml
