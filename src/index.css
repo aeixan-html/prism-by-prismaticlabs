@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-bg font-sans text-ptext antialiased;
+  }
+  ::selection {
+    @apply bg-primary/30 text-ptext;
+  }
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-bg;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-border-2 rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-mtext-2;
+  }
+}
+
+@layer components {
+  @keyframes fade-up {
+    0% { opacity: 0; transform: translateY(12px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  .reveal {
+    @apply opacity-0;
+    animation: fade-up 0.5s ease-out forwards;
+  }
+  .reveal-delay-1 { animation-delay: 0.08s; }
+  .reveal-delay-2 { animation-delay: 0.16s; }
+  .reveal-delay-3 { animation-delay: 0.24s; }
+  .reveal-delay-4 { animation-delay: 0.32s; }
+  .reveal-delay-5 { animation-delay: 0.4s; }
+  .reveal-delay-6 { animation-delay: 0.48s; }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
