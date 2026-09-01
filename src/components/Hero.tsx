@@ -45,11 +45,11 @@ export default function Hero() {
                 <div className="relative overflow-hidden bg-bg p-5 md:p-6">
                   <div className="flex items-center justify-between border-b border-border pb-3">
                     <div className="flex items-center gap-2">
-                      <div className="h-2 w-2 rounded-full bg-accent4 animate-pulse-dot" />
+                      <div className="h-2 w-2 rounded-full bg-accent4 animate-pulse-dot" aria-hidden="true" />
                       <span className="font-mono text-xs font-semibold tracking-wider text-ptext">PRISM</span>
                     </div>
                     <div className="flex items-center gap-1.5 font-mono text-xs text-mtext">
-                      <Wifi className="h-3 w-3 text-accent4" />
+                      <Wifi className="h-3 w-3 text-accent4" aria-hidden="true" />
                       ONLINE
                     </div>
                   </div>
@@ -121,7 +121,7 @@ export default function Hero() {
                     <span className="font-mono text-[10px] text-mtext">Prototype v0.1</span>
                   </div>
                 </div>
-              </article>
+              </div>
 
               <div className="absolute -right-3 top-1/4 hidden border border-border bg-surface/95 px-2.5 py-1.5 text-xs text-stext md:block">
                 <div className="flex items-center gap-1.5">
@@ -135,7 +135,7 @@ export default function Hero() {
                   NFC Ready
                 </div>
               </div>
-            </div>
+            </article>
           </div>
         </div>
       </div>

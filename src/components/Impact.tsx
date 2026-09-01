@@ -31,7 +31,7 @@ export default function Impact() {
             <ul className="space-y-3">
               {customerBenefits.map((b) => (
                 <li key={b} className="flex items-start gap-3 border-b border-border pb-3 text-sm text-stext md:text-base">
-                  <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 bg-primary" />
+                  <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 bg-primary" aria-hidden="true" />
                   {b}
                 </li>
               ))}
@@ -43,7 +43,7 @@ export default function Impact() {
             <ul className="space-y-3">
               {businessBenefits.map((b) => (
                 <li key={b} className="flex items-start gap-3 border-b border-border pb-3 text-sm text-stext md:text-base">
-                  <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 bg-secondary" />
+                  <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 bg-secondary" aria-hidden="true" />
                   {b}
                 </li>
               ))}

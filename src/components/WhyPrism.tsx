@@ -36,7 +36,7 @@ export default function WhyPrism() {
             <ul className="space-y-3">
               {traditionalFeatures.map((f) => (
                 <li key={f} className="flex items-start gap-2.5 text-sm text-mtext-2">
-                  <X className="mt-0.5 h-4 w-4 flex-shrink-0 text-mtext" />
+                  <X className="mt-0.5 h-4 w-4 flex-shrink-0 text-mtext" aria-hidden="true" />
                   {f}
                 </li>
               ))}
@@ -47,7 +47,7 @@ export default function WhyPrism() {
             <ul className="space-y-3">
               {prismFeatures.map((f) => (
                 <li key={f} className="flex items-start gap-2.5 text-sm text-ptext">
-                  <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-accent4" />
+                  <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-accent4" aria-hidden="true" />
                   {f}
                 </li>
               ))}
