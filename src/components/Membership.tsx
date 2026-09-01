@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Section } from './Section';
-import { Nfc, TrendingUp } from 'lucide-react';
+import { Nfc } from 'lucide-react';
 import MembershipCard from './MembershipCard';
 import { membershipTiers, demoMembership, PRISM_POINTS_RULE } from '@/data/membership';
 

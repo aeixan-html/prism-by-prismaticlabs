@@ -1,5 +1,5 @@
 import type { ChatResponse, Product } from './types';
-import { products, getProductById, getDiscountPercent, getMemberSavings } from './products';
+import { products, getDiscountPercent } from './products';
 import { demoMembership } from './membership';
 
 function findProductsByQuery(query: string): Product[] {
@@ -180,7 +180,6 @@ export function processQuery(input: string): ChatResponse {
     if (matched.length > 0) {
       const p = matched[0];
       const discount = getDiscountPercent(p);
-      const memberSave = getMemberSavings(p);
       const trend = p.currentPrice < p.previousPrice ? 'down from' : p.currentPrice > p.previousPrice ? 'up from' : 'currently';
       const trendLabel = trend === 'down from' ? `, down from ₹${p.previousPrice}` : trend === 'up from' ? `, up from ₹${p.previousPrice}` : '';
       return {

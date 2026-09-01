@@ -36,7 +36,7 @@ export default function Development() {
         <div className="reveal reveal-delay-2 mb-12">
           <div className="border border-border">
             <div className="grid grid-cols-5">
-              {timeline.map((step, i) => (
+              {timeline.map((step) => (
                 <div
                   key={step.label}
                   className={`flex flex-col items-center border-r border-border px-2 py-4 last:border-r-0 ${
