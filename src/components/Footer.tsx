@@ -5,14 +5,14 @@ export default function Footer() {
         <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
           <div className="flex items-center gap-2.5">
             <img
-              src="/prismtic.jpeg"
-              alt="PRISMATIC LABS official logo"
+              src="/Low-Poly_Triangular_Prism_Icon_20260826_145832_0000.png"
+              alt="NOSDIA logo"
               className="h-9 w-9 object-contain"
             />
-            <span className="text-sm font-bold tracking-tight text-ptext">PRISMATIC LABS</span>
+            <span className="text-sm font-bold tracking-tight text-ptext">NOSDIA</span>
           </div>
           <p className="text-xs text-mtext-2">
-            PRISM — Personalized Retail Intelligence and Sales Manager. Student technology project MVP.
+            PRISM by NOSDIA — Personalized Retail Intelligence and Sales Manager. Student technology project MVP.
           </p>
           <nav aria-label="Footer navigation">
             <ul className="flex items-center gap-4">

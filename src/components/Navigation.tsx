@@ -37,11 +37,11 @@ export default function Navigation() {
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3.5 md:px-6">
           <button onClick={() => handleNavClick('#hero')} className="flex items-center gap-2.5" aria-label="Go to PRISM home">
             <img
-              src="/prismtic.jpeg"
-              alt="PRISMATIC LABS official logo"
+              src="/Low-Poly_Triangular_Prism_Icon_20260826_145832_0000.png"
+              alt="NOSDIA logo"
               className="h-9 w-9 object-contain"
             />
-            <span className="text-sm font-bold tracking-tight text-ptext">PRISMATIC LABS</span>
+            <span className="text-sm font-bold tracking-tight text-ptext">NOSDIA</span>
           </button>
 
         <div className="hidden items-center gap-0.5 lg:flex">

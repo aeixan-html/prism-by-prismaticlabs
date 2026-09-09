@@ -10,7 +10,7 @@ export default function Hero() {
       <div className="mx-auto max-w-6xl px-4 md:px-6">
         <div className="reveal mb-8 flex items-center gap-3">
           <div className="h-px w-8 bg-border-2" />
-          <span className="font-mono text-eyebrow uppercase text-mtext-2">PRISMATIC LABS / PRISM</span>
+          <span className="font-mono text-eyebrow uppercase text-mtext-2">NOSDIA / PRISM</span>
         </div>
 
         <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-16">
@@ -117,7 +117,7 @@ export default function Hero() {
                   </div>
 
                   <div className="flex items-center justify-between border-t border-border pt-2.5">
-                    <span className="font-mono text-[10px] text-mtext">PRISMATIC LABS</span>
+                    <span className="font-mono text-[10px] text-mtext">NOSDIA</span>
                     <span className="font-mono text-[10px] text-mtext">Prototype v0.1</span>
                   </div>
                 </div>

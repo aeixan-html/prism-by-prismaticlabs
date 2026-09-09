@@ -3,11 +3,11 @@ import Seo from '@/components/Seo';
 const sections = [
   {
     heading: 'Overview',
-    body: 'These Terms describe the conditions for using the PRISM by PRISMATIC LABS demonstration website. By accessing this website, you agree to these terms.',
+    body: 'These Terms describe the conditions for using the PRISM by NOSDIA demonstration website. By accessing this website, you agree to these terms.',
   },
   {
     heading: 'Demonstration Project',
-    body: 'PRISM (Personalized Retail Intelligence and Sales Manager) is a student technology project and concept prototype by PRISMATIC LABS. This website is a demonstration and does not constitute a commercial product, service, or offering.',
+    body: 'PRISM (Personalized Retail Intelligence and Sales Manager) is a student technology project and concept prototype by NOSDIA. This website is a demonstration and does not constitute a commercial product, service, or offering.',
   },
   {
     heading: 'Demo Content',
@@ -15,23 +15,23 @@ const sections = [
   },
   {
     heading: 'No Warranty',
-    body: 'The website is provided "as is" without warranties of any kind. PRISMATIC LABS does not guarantee that the website will be error-free, uninterrupted, or continuously available.',
+    body: 'The website is provided "as is" without warranties of any kind. NOSDIA does not guarantee that the website will be error-free, uninterrupted, or continuously available.',
   },
   {
     heading: 'Intellectual Property',
-    body: 'The PRISM name, PRISMATIC LABS name, logo, design, and website content are the intellectual property of PRISMATIC LABS. You may not copy, reproduce, or distribute the website content without permission.',
+    body: 'The PRISM name, NOSDIA name, logo, design, and website content are the intellectual property of NOSDIA. You may not copy, reproduce, or distribute the website content without permission.',
   },
   {
     heading: 'Limitation of Liability',
-    body: 'PRISMATIC LABS is not liable for any damages arising from the use of this demonstration website. The website is provided for informational and demonstration purposes only.',
+    body: 'NOSDIA is not liable for any damages arising from the use of this demonstration website. The website is provided for informational and demonstration purposes only.',
   },
   {
     heading: 'External Links',
-    body: 'This website does not currently link to external sites. If external links are added in the future, PRISMATIC LABS is not responsible for the content or practices of those external sites.',
+    body: 'This website does not currently link to external sites. If external links are added in the future, NOSDIA is not responsible for the content or practices of those external sites.',
   },
   {
     heading: 'Changes',
-    body: 'PRISMATIC LABS may update these Terms at any time. Continued use of the website after changes constitutes acceptance of the updated Terms.',
+    body: 'NOSDIA may update these Terms at any time. Continued use of the website after changes constitutes acceptance of the updated Terms.',
   },
 ];
 
@@ -39,8 +39,8 @@ export default function TermsPage() {
   return (
     <>
       <Seo
-        title="Terms of Use | PRISM by PRISMATIC LABS"
-        description="Terms of Use for the PRISM by PRISMATIC LABS demonstration website. A student technology project and concept prototype."
+        title="Terms of Use | PRISM by NOSDIA"
+        description="Terms of Use for the PRISM by NOSDIA demonstration website. A student technology project and concept prototype."
         canonicalPath="/terms"
       />
       <section className="pt-28 pb-16 md:pt-36 md:pb-24">

@@ -3,4 +3,4 @@ Allow: /
 Allow: /privacy
 Allow: /terms
 
-Sitemap: https://prismbyprismaticlabs.vercel.app/sitemap.xml
+Sitemap: /sitemap.xml

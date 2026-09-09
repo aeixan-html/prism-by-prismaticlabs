@@ -17,8 +17,8 @@ export default function HomePage() {
   return (
     <>
       <Seo
-        title="PRISM by PRISMATIC LABS | AI Business Companion"
-        description="PRISM is an AI-powered business companion by PRISMATIC LABS for retail, combining AI, computer vision, voice, touch, NFC, and business intelligence."
+        title="PRISM by NOSDIA | AI Business Companion"
+        description="PRISM by NOSDIA is an AI-powered business companion for retail, combining AI, computer vision, voice, touch, NFC, and business intelligence."
         canonicalPath="/"
       />
       <Hero />

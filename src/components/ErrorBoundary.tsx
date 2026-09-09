@@ -21,8 +21,8 @@ export default class ErrorBoundary extends Component<Props, State> {
         <div className="flex min-h-screen items-center justify-center bg-bg px-4">
           <div className="max-w-md text-center">
             <div className="mb-6 flex items-center justify-center gap-3">
-              <img src="/prismtic.jpeg" alt="PRISMATIC LABS official logo" className="h-10 w-10 object-contain" />
-              <span className="font-mono text-sm font-bold tracking-tight text-ptext">PRISMATIC LABS</span>
+              <img src="/Low-Poly_Triangular_Prism_Icon_20260826_145832_0000.png" alt="NOSDIA logo" className="h-10 w-10 object-contain" />
+              <span className="font-mono text-sm font-bold tracking-tight text-ptext">NOSDIA</span>
             </div>
             <h1 className="text-2xl font-bold text-ptext">Something went wrong</h1>
             <p className="mt-3 text-sm text-mtext-2">

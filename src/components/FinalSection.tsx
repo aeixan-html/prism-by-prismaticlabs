@@ -10,11 +10,11 @@ export default function FinalSection() {
       <div className="mx-auto max-w-3xl px-4 text-center md:px-6">
         <div className="mb-6 flex items-center justify-center gap-3">
           <img
-            src="/prismtic.jpeg"
-            alt="PRISMATIC LABS official logo"
+            src="/Low-Poly_Triangular_Prism_Icon_20260826_145832_0000.png"
+            alt="NOSDIA logo"
             className="h-10 w-10 object-contain"
           />
-          <span className="font-mono text-eyebrow uppercase text-mtext-2">PRISMATIC LABS</span>
+          <span className="font-mono text-eyebrow uppercase text-mtext-2">NOSDIA</span>
           <div className="h-px w-8 bg-border-2" />
         </div>
         <h2 className="text-hero text-balance text-ptext">P.R.I.S.M.</h2>

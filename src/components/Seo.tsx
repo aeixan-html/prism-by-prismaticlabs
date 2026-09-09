@@ -6,10 +6,10 @@ interface SeoProps {
   canonicalPath?: string;
 }
 
-const BASE_URL = 'https://prismbyprismaticlabs.vercel.app';
+const getBaseUrl = () => window.location.origin;
 
 export default function Seo({ title, description, canonicalPath = '/' }: SeoProps) {
-  const canonical = `${BASE_URL}${canonicalPath}`;
+  const canonical = `${getBaseUrl()}${canonicalPath}`;
 
   useEffect(() => {
     document.title = title;

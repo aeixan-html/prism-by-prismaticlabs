@@ -5,15 +5,15 @@ export default function NotFoundPage() {
   return (
     <>
       <Seo
-        title="Page Not Found | PRISM by PRISMATIC LABS"
-        description="The page you requested does not exist on the PRISM by PRISMATIC LABS website."
+        title="Page Not Found | PRISM by NOSDIA"
+        description="The page you requested does not exist on the PRISM by NOSDIA website."
         canonicalPath="/404"
       />
       <section className="flex min-h-screen items-center justify-center px-4 pt-20">
         <div className="mx-auto max-w-lg text-center">
           <div className="mb-6 flex items-center justify-center gap-3">
-            <img src="/prismtic.jpeg" alt="PRISMATIC LABS official logo" className="h-10 w-10 object-contain" />
-            <span className="font-mono text-sm font-bold tracking-tight text-ptext">PRISMATIC LABS</span>
+            <img src="/Low-Poly_Triangular_Prism_Icon_20260826_145832_0000.png" alt="NOSDIA logo" className="h-10 w-10 object-contain" />
+            <span className="font-mono text-sm font-bold tracking-tight text-ptext">NOSDIA</span>
           </div>
 
           <div className="mb-4 flex items-center justify-center gap-3">

@@ -3,7 +3,7 @@ import Seo from '@/components/Seo';
 const sections = [
   {
     heading: 'Overview',
-    body: 'This website is a demonstration project for PRISM (Personalized Retail Intelligence and Sales Manager), a concept by PRISMATIC LABS. This Privacy Policy explains what the website does and does not do.',
+    body: 'This website is a demonstration project for PRISM (Personalized Retail Intelligence and Sales Manager), a concept by NOSDIA. This Privacy Policy explains what the website does and does not do.',
   },
   {
     heading: 'No Real User Data',
@@ -27,7 +27,7 @@ const sections = [
   },
   {
     heading: 'Hosting',
-    body: 'The website is hosted on a static hosting platform. The hosting provider may process standard HTTP request logs (such as IP address and request path) as part of normal infrastructure operation, but PRISMATIC LABS does not collect or control that data.',
+    body: 'The website is hosted on a static hosting platform. The hosting provider may process standard HTTP request logs (such as IP address and request path) as part of normal infrastructure operation, but NOSDIA does not collect or control that data.',
   },
   {
     heading: 'Changes',
@@ -39,8 +39,8 @@ export default function PrivacyPage() {
   return (
     <>
       <Seo
-        title="Privacy Policy | PRISM by PRISMATIC LABS"
-        description="Privacy Policy for the PRISM by PRISMATIC LABS demonstration website. No real user data is collected, stored, or shared."
+        title="Privacy Policy | PRISM by NOSDIA"
+        description="Privacy Policy for the PRISM by NOSDIA demonstration website. No real user data is collected, stored, or shared."
         canonicalPath="/privacy"
       />
       <section className="pt-28 pb-16 md:pt-36 md:pb-24">
