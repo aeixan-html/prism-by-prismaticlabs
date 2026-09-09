@@ -12,7 +12,7 @@ export default function Footer() {
             <span className="text-sm font-bold tracking-tight text-ptext">NOSDIA</span>
           </div>
           <p className="text-xs text-mtext-2">
-            PRISM by NOSDIA — Personalized Retail Intelligence and Sales Manager. Student technology project MVP.
+            PRISM by NOSDIA. Personalized Retail Intelligence and Sales Manager. Student technology project MVP.
           </p>
           <nav aria-label="Footer navigation">
             <ul className="flex items-center gap-4">

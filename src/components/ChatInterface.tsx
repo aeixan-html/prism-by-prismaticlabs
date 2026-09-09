@@ -12,7 +12,7 @@ const genId = () => `msg-${++messageId}`;
 const initialMessage: Message = {
   id: genId(),
   role: 'prism',
-  text: "PRISM is online. I'm running in demo mode — ask me about products, prices, your membership, or today's offers.",
+  text: "PRISM is online. I'm running in demo mode. Ask me about products, prices, your membership, or today's offers.",
 };
 
 export default function ChatInterface() {
@@ -85,7 +85,7 @@ export default function ChatInterface() {
         <SectionHeader
           label="INTERACTIVE DEMO"
           title="Talk to PRISM"
-          description="Try the PRISM conversation interface. All responses use local demo data — no external AI or login required."
+          description="Try the PRISM conversation interface. All responses use local demo data. No external AI or login required."
         />
 
         <div className="mx-auto max-w-2xl">
@@ -97,7 +97,7 @@ export default function ChatInterface() {
                 <div className="relative">
                   <div className="h-2.5 w-2.5 rounded-full bg-accent4 animate-pulse-dot" aria-hidden="true" />
                 </div>
-                <span className="font-mono text-sm font-semibold text-ptext">PRISM — ONLINE</span>
+                <span className="font-mono text-sm font-semibold text-ptext">PRISM / ONLINE</span>
               </div>
               <div className="flex items-center gap-1.5 font-mono text-xs text-mtext">
                 <Sparkles className="h-3 w-3 text-primary" aria-hidden="true" />

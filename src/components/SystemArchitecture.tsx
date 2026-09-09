@@ -19,7 +19,7 @@ export default function SystemArchitecture() {
           </div>
           <h2 className="text-section-title text-balance text-ptext">Four layers, one system.</h2>
           <p className="mt-4 max-w-xl text-sm leading-relaxed text-mtext-2 md:text-base">
-            From physical sensing to retail intelligence — each layer builds on the previous.
+            From physical sensing to retail intelligence. Each layer builds on the previous.
           </p>
         </div>
 

@@ -13,7 +13,7 @@ export default function Membership() {
         <div className="reveal mb-10">
           <div className="mb-4 flex items-center gap-3">
             <div className="h-px w-8 bg-border-2" />
-            <span className="font-mono text-eyebrow uppercase text-mtext-2">NRLS — MEMBERSHIP SYSTEM</span>
+            <span className="font-mono text-eyebrow uppercase text-mtext-2">NRLS / MEMBERSHIP SYSTEM</span>
           </div>
           <h2 className="text-section-title text-balance text-ptext">Personalization through NFC.</h2>
           <p className="mt-4 max-w-xl text-sm leading-relaxed text-mtext-2 md:text-base">

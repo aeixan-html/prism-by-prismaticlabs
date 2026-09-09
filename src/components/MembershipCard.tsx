@@ -58,7 +58,7 @@ export default function MembershipCard() {
               className="h-full transition-all duration-700"
               style={{
                 width: `${progress}%`,
-                background: `linear-gradient(90deg, ${tier.color}, ${nextTier.color})`,
+                backgroundColor: tier.color,
               }}
             />
           </div>

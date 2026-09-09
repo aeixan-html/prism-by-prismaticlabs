@@ -11,7 +11,7 @@ const sections = [
   },
   {
     heading: 'Demo Data Is Local and Predefined',
-    body: 'All products, prices, membership tiers, PRISM Points, offers, and chat responses shown on this website are predefined demo data embedded in the application code. No data is sent to a server, stored in a database, or shared with third parties. The PRISM conversation demo uses local logic — no external AI service is called.',
+    body: 'All products, prices, membership tiers, PRISM Points, offers, and chat responses shown on this website are predefined demo data embedded in the application code. No data is sent to a server, stored in a database, or shared with third parties. The PRISM conversation demo uses local logic. No external AI service is called.',
   },
   {
     heading: 'Cookies',

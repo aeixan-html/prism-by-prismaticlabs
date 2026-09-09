@@ -24,7 +24,7 @@ export default function MeetPrism() {
               One system, six capabilities.
             </h2>
             <p className="text-sm leading-relaxed text-mtext-2 lg:col-span-5 md:text-base">
-              PRISM combines AI with physical retail interaction to assist customers and support businesses. These are capabilities of a single system — not separate products.
+              PRISM combines AI with physical retail interaction to assist customers and support businesses. These are capabilities of a single system, not separate products.
             </p>
           </div>
         </div>
@@ -52,7 +52,7 @@ export default function MeetPrism() {
           <div className="flex flex-col gap-4 border border-border bg-surface p-5 md:flex-row md:items-center md:justify-between md:p-6">
             <div>
               <h3 className="text-base font-semibold text-ptext">Try the live demo</h3>
-              <p className="mt-1 text-sm text-mtext-2">Talk to PRISM directly — ask about products, prices, membership, or offers.</p>
+              <p className="mt-1 text-sm text-mtext-2">Talk to PRISM directly. Ask about products, prices, membership, or offers.</p>
             </div>
             <button
               onClick={() => document.querySelector('#demo')?.scrollIntoView({ behavior: 'smooth' })}

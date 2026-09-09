@@ -28,7 +28,7 @@ export const offers: Offer[] = [
     label: '20% OFF',
     description: 'Selected products across the store.',
     type: 'discount',
-    accent: '#8B5CF6',
+    accent: '#2563EB',
   },
   {
     id: 'offer-member-15',

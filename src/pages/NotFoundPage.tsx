@@ -18,14 +18,14 @@ export default function NotFoundPage() {
 
           <div className="mb-4 flex items-center justify-center gap-3">
             <div className="h-px w-8 bg-border-2" />
-            <span className="font-mono text-eyebrow uppercase text-mtext-2">404 — NOT FOUND</span>
+            <span className="font-mono text-eyebrow uppercase text-mtext-2">404 / NOT FOUND</span>
             <div className="h-px w-8 bg-border-2" />
           </div>
 
           <h1 className="text-hero text-balance text-ptext">Page not found</h1>
           <p className="mt-5 text-sm leading-relaxed text-mtext-2 md:text-base">
             The page you requested doesn't exist or may have been moved. The PRISM website is a single-page
-            experience — everything lives on the homepage.
+            experience. Everything lives on the homepage.
           </p>
 
           <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">

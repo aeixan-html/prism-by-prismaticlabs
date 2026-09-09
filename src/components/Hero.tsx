@@ -20,7 +20,7 @@ export default function Hero() {
               Personalized Retail Intelligence and Sales Manager
             </p>
             <p className="mt-5 max-w-md text-sm leading-relaxed text-mtext-2 md:text-base">
-              An intelligent retail companion that connects AI with the physical shopping environment — voice, vision, touch, and NFC in one system.
+              An intelligent retail companion that connects AI with the physical shopping environment: voice, vision, touch, and NFC in one system.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <button

@@ -19,7 +19,7 @@ export default function Problem() {
             </div>
             <h2 className="text-section-title text-balance text-ptext">Retail can be smarter.</h2>
             <p className="mt-4 text-sm leading-relaxed text-mtext-2 md:text-base">
-              Four challenges that shape the everyday shopping experience — for customers and businesses alike.
+              Four challenges that shape the everyday shopping experience, for customers and businesses alike.
             </p>
           </div>
 

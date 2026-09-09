@@ -116,7 +116,7 @@ export function processQuery(input: string): ChatResponse {
         };
       }
       return {
-        text: `The demo price for **${p.name}** has stayed at **₹${p.currentPrice}** — no change from the previous price.`,
+        text: `The demo price for **${p.name}** has stayed at **₹${p.currentPrice}**. There is no change from the previous price.`,
         attachments: [{ type: 'product-card', productId: p.id }],
       };
     }
