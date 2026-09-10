@@ -12,8 +12,32 @@ const genId = () => `msg-${++messageId}`;
 const initialMessage: Message = {
   id: genId(),
   role: 'prism',
-  text: "PRISM is online. I'm running in demo mode. Ask me about products, prices, your membership, or today's offers.",
+  text: "PRISM is online. Ask me about products, prices, your membership, or today's offers.",
 };
+
+async function callPrismAI(
+  message: string,
+  history: { role: 'user' | 'model'; text: string }[],
+): Promise<string> {
+  const apiUrl = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/prism-chat`;
+  const headers = {
+    Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
+    'Content-Type': 'application/json',
+  };
+  const response = await fetch(apiUrl, {
+    method: 'POST',
+    headers,
+    body: JSON.stringify({ message, history }),
+  });
+  if (!response.ok) {
+    throw new Error(`Request failed (${response.status})`);
+  }
+  const data = await response.json();
+  if (!data || typeof data.reply !== 'string') {
+    throw new Error('Invalid response from AI');
+  }
+  return data.reply;
+}
 
 export default function ChatInterface() {
   const [messages, setMessages] = useState<Message[]>([initialMessage]);
@@ -51,19 +75,36 @@ export default function ChatInterface() {
       const processingMsg: Message = { id: genId(), role: 'prism', text: '', isProcessing: true };
       setMessages((prev) => [...prev, processingMsg]);
 
-      await new Promise((resolve) => setTimeout(resolve, 700));
+      try {
+        const history = messages
+          .filter((m) => !m.isProcessing && m.text)
+          .map((m) => ({
+            role: m.role === 'user' ? 'user' as const : 'model' as const,
+            text: m.text,
+          }));
 
-      const response = processQuery(text);
-      setMessages((prev) =>
-        prev.map((m) =>
-          m.id === processingMsg.id
-            ? { ...m, text: response.text, attachments: response.attachments, isProcessing: false }
-            : m,
-        ),
-      );
+        const aiReply = await callPrismAI(text, history);
+
+        setMessages((prev) =>
+          prev.map((m) =>
+            m.id === processingMsg.id
+              ? { ...m, text: aiReply, isProcessing: false }
+              : m,
+          ),
+        );
+      } catch {
+        const fallback = processQuery(text);
+        setMessages((prev) =>
+          prev.map((m) =>
+            m.id === processingMsg.id
+              ? { ...m, text: fallback.text, attachments: fallback.attachments, isProcessing: false }
+              : m,
+          ),
+        );
+      }
       setIsProcessing(false);
     },
-    [isProcessing],
+    [isProcessing, messages],
   );
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -85,7 +126,7 @@ export default function ChatInterface() {
         <SectionHeader
           label="INTERACTIVE DEMO"
           title="Talk to PRISM"
-          description="Try the PRISM conversation interface. All responses use local demo data. No external AI or login required."
+          description="Try the PRISM conversation interface. PRISM is powered by live AI and can answer questions about products, prices, membership, and offers."
         />
 
         <div className="mx-auto max-w-2xl">
@@ -101,7 +142,7 @@ export default function ChatInterface() {
               </div>
               <div className="flex items-center gap-1.5 font-mono text-xs text-mtext">
                 <Sparkles className="h-3 w-3 text-primary" aria-hidden="true" />
-                Demo Mode
+                Live AI
               </div>
             </div>
 
@@ -174,7 +215,7 @@ export default function ChatInterface() {
           </div>
 
           <p className="mt-3 text-center font-mono text-xs text-mtext">
-            All responses are predefined demo data. No external AI, login, or database is used.
+            PRISM is powered by live AI. Ask about products, prices, membership, or offers.
           </p>
         </div>
       </div>

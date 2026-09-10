@@ -1,0 +1,2 @@
+[functions.prism-chat]
+verify_jwt = false
