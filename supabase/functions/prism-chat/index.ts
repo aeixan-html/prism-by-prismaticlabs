@@ -93,26 +93,42 @@ Deno.serve(async (req: Request) => {
       { role: "user", parts: [{ text: message }] },
     ];
 
-    const geminiResponse = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${apiKey}`,
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          contents,
-          systemInstruction: { parts: [{ text: SYSTEM_PROMPT }] },
-          generationConfig: {
-            temperature: 0.7,
-            maxOutputTokens: 512,
-          },
-        }),
-      },
-    );
+    const models = ["gemini-2.0-flash-001", "gemini-2.0-flash", "gemini-1.5-flash", "gemini-flash-latest", "gemini-1.5-flash-002"];
+    let geminiResponse: Response | null = null;
+    let lastError = "";
 
-    if (!geminiResponse.ok) {
-      const errText = await geminiResponse.text();
+    for (const model of models) {
+      geminiResponse = await fetch(
+        `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            contents,
+            systemInstruction: { parts: [{ text: SYSTEM_PROMPT }] },
+            generationConfig: {
+              temperature: 0.7,
+              maxOutputTokens: 512,
+            },
+          }),
+        },
+      );
+      if (geminiResponse.ok) break;
+      lastError = await geminiResponse.clone().text();
+      geminiResponse = null;
+    }
+
+    if (!geminiResponse || !geminiResponse.ok) {
+      const listResp = await fetch(
+        `https://generativelanguage.googleapis.com/v1beta/models?key=${apiKey}`,
+      );
+      let availableModels = "";
+      if (listResp.ok) {
+        const listData = await listResp.json();
+        availableModels = (listData.models || []).map((m: any) => m.name).join(", ");
+      }
       return new Response(
-        JSON.stringify({ error: `Gemini API error: ${geminiResponse.status}` }),
+        JSON.stringify({ error: `Gemini API error. Available models: ${availableModels}. Last error: ${lastError}` }),
         { status: 502, headers: { ...corsHeaders, "Content-Type": "application/json" } },
       );
     }
