@@ -17,7 +17,7 @@ export default function Hero() {
           <div className="reveal reveal-delay-1 lg:col-span-5">
             <h1 className="text-hero text-balance text-ptext">P.R.I.S.M.</h1>
             <p className="mt-4 text-base font-medium text-stext md:text-lg">
-              Personalized Retail Intelligence and Sales Manager
+              Personalized Retail Intelligence and Service Module
             </p>
             <p className="mt-5 max-w-md text-sm leading-relaxed text-mtext-2 md:text-base">
               An intelligent retail companion that connects AI with the physical shopping environment: voice, vision, touch, and NFC in one system.
