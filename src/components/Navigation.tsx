@@ -49,7 +49,7 @@ export default function Navigation() {
             <button
               key={link.href}
               onClick={() => handleNavClick(link.href)}
-              className="px-3 py-1.5 text-sm text-mtext-2 transition-colors hover:text-ptext"
+              className="px-3 py-1.5 text-sm text-mtext-2 transition-smooth hover:text-ptext"
             >
               {link.label}
             </button>
@@ -59,7 +59,7 @@ export default function Navigation() {
         <div className="hidden lg:block">
           <button
             onClick={() => handleNavClick('#demo')}
-            className="text-sm font-medium text-primary transition-colors hover:text-vlink"
+            className="text-sm font-medium text-primary transition-smooth hover:text-vlink"
           >
             Explore PRISM →
           </button>

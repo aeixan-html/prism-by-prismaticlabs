@@ -1,4 +1,6 @@
 import Seo from '@/components/Seo';
+import { Link } from 'react-router-dom';
+import { ArrowLeft } from 'lucide-react';
 
 const sections = [
   {
@@ -62,9 +64,10 @@ export default function TermsPage() {
           </div>
 
           <div className="mt-10 border-t border-border pt-6">
-            <a href="/" className="text-sm font-medium text-primary transition-colors hover:text-vlink">
-              ← Back to Homepage
-            </a>
+            <Link to="/" className="inline-flex items-center gap-1.5 text-sm font-medium text-primary transition-colors hover:text-vlink">
+              <ArrowLeft className="h-4 w-4" aria-hidden="true" />
+              Back to Homepage
+            </Link>
           </div>
         </div>
       </section>

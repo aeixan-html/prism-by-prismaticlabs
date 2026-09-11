@@ -1,4 +1,5 @@
 import Seo from '@/components/Seo';
+import { Link } from 'react-router-dom';
 import { ArrowRight, Home } from 'lucide-react';
 
 export default function NotFoundPage() {
@@ -29,20 +30,20 @@ export default function NotFoundPage() {
           </p>
 
           <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-            <a
-              href="/"
+            <Link
+              to="/"
               className="inline-flex items-center gap-2 bg-primary px-5 py-2.5 text-sm font-semibold text-white transition-all hover:bg-primary/90"
             >
               <Home className="h-4 w-4" aria-hidden="true" />
               Back to Homepage
-            </a>
-            <a
-              href="/#demo"
+            </Link>
+            <Link
+              to="/#demo"
               className="inline-flex items-center gap-2 border border-border-2 px-5 py-2.5 text-sm font-medium text-stext transition-all hover:border-mtext-2 hover:text-ptext"
             >
               Explore PRISM
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
-            </a>
+            </Link>
           </div>
         </div>
       </section>

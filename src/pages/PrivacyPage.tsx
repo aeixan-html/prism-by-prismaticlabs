@@ -1,4 +1,6 @@
 import Seo from '@/components/Seo';
+import { Link } from 'react-router-dom';
+import { ArrowLeft } from 'lucide-react';
 
 const sections = [
   {
@@ -11,7 +13,11 @@ const sections = [
   },
   {
     heading: 'Demo Data Is Local and Predefined',
-    body: 'All products, prices, membership tiers, PRISM Points, offers, and chat responses shown on this website are predefined demo data embedded in the application code. No data is sent to a server, stored in a database, or shared with third parties. The PRISM conversation demo uses local logic. No external AI service is called.',
+    body: 'All products, prices, membership tiers, PRISM Points, and offers shown on this website are predefined demo data embedded in the application code. No data is sent to a server, stored in a database, or shared with third parties.',
+  },
+  {
+    heading: 'AI Conversation',
+    body: 'The PRISM conversation feature is powered by a live AI service. When you send a message in the demo chat, your input and conversation history are sent to the AI service to generate a response. The AI service processes the message to produce a reply. No conversation data is stored or retained by this website.',
   },
   {
     heading: 'Cookies',
@@ -23,7 +29,7 @@ const sections = [
   },
   {
     heading: 'Third-Party Services',
-    body: 'This website does not integrate with or send data to any third-party service. All content is self-contained within the application.',
+    body: 'The AI conversation feature communicates with an external AI API to generate responses. Apart from this, the website does not integrate with or send data to any other third-party service.',
   },
   {
     heading: 'Hosting',
@@ -31,7 +37,7 @@ const sections = [
   },
   {
     heading: 'Changes',
-    body: 'If this website is ever updated to collect data, use cookies, or integrate third-party services, this Privacy Policy will be updated to reflect those changes accurately.',
+    body: 'If this website is ever updated to collect data, use cookies, or integrate additional third-party services, this Privacy Policy will be updated to reflect those changes accurately.',
   },
 ];
 
@@ -62,9 +68,10 @@ export default function PrivacyPage() {
           </div>
 
           <div className="mt-10 border-t border-border pt-6">
-            <a href="/" className="text-sm font-medium text-primary transition-colors hover:text-vlink">
-              ← Back to Homepage
-            </a>
+            <Link to="/" className="inline-flex items-center gap-1.5 text-sm font-medium text-primary transition-colors hover:text-vlink">
+              <ArrowLeft className="h-4 w-4" aria-hidden="true" />
+              Back to Homepage
+            </Link>
           </div>
         </div>
       </section>

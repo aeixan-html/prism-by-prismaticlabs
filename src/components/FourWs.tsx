@@ -13,7 +13,7 @@ export default function FourWs() {
       <div className="mx-auto max-w-6xl px-4 md:px-6">
         <div className="grid gap-px border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
           {fourWs.map((w) => (
-            <div key={w.label} className="bg-bg p-6">
+            <div key={w.label} className="bg-bg p-6 transition-colors duration-200 hover:bg-surface/50">
               <span className="font-mono text-xs font-bold tracking-[0.15em] text-primary">{w.label}</span>
               <h3 className="mt-3 text-base font-semibold text-ptext">{w.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-mtext-2">{w.description}</p>

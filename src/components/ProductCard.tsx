@@ -20,7 +20,7 @@ export default function ProductCard({ product, onClick, compact = false }: Produ
   return (
     <button
       onClick={() => onClick?.(product)}
-      className="group relative w-full overflow-hidden bg-bg p-4 text-left transition-all duration-200 hover:bg-surface"
+      className="group relative w-full overflow-hidden bg-bg p-4 text-left transition-all duration-200 hover:bg-surface hover:border-primary/20"
     >
       {product.onSale && (
         <div className="absolute right-0 top-0 bg-primary/20 px-2.5 py-1 font-mono text-[10px] font-semibold text-primary" aria-label="On sale">
@@ -77,7 +77,7 @@ export default function ProductCard({ product, onClick, compact = false }: Produ
         </div>
       )}
 
-      <div className="mt-3 flex items-center justify-between">
+      <div className="mt-3 flex items-center justify-between transition-opacity duration-200">
         <span className={`text-[10px] font-medium ${stockColor}`}>{stockLabel}</span>
         {trend === 'down' && <span className="font-mono text-[10px] text-accent4">↓ dropped</span>}
         {trend === 'up' && <span className="font-mono text-[10px] text-accent6">↑ rose</span>}

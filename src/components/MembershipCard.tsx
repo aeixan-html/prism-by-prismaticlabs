@@ -7,7 +7,7 @@ export default function MembershipCard() {
   const progress = (demoMembership.points / demoMembership.pointsToNextTier) * 100;
 
   return (
-    <div className="relative overflow-hidden border border-border bg-surface p-5">
+    <div className="relative overflow-hidden border border-border bg-surface p-5 transition-colors duration-200 hover:border-border-2">
       <div className="relative">
         <div className="mb-4 flex items-center justify-between">
           <span className="font-mono text-xs font-semibold uppercase tracking-[0.15em] text-mtext-2">PRISM Membership</span>

@@ -230,7 +230,7 @@ export function processQuery(input: string): ChatResponse {
 
   // Fallback
   return {
-    text: "I'm currently running in demo mode. Try one of the suggested retail requests to explore what I can do.",
+    text: "I'm here to help. Try one of the suggested prompts to explore what I can do, or ask me about products, prices, membership, or offers.",
   };
 }
 

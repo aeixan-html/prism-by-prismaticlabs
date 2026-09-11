@@ -12,16 +12,45 @@ interface ChatMessageProps {
 }
 
 function renderFormattedText(text: string) {
-  const parts = text.split(/(\*\*[^*]+\*\*)/g);
-  return parts.map((part, i) => {
-    if (part.startsWith('**') && part.endsWith('**')) {
+  const lines = text.split('\n');
+  return lines.map((line, lineIdx) => {
+    const trimmed = line.trim();
+    const isBullet = /^[*-]\s+/.test(trimmed);
+    const isNumbered = /^\d+[.)]\s+/.test(trimmed);
+    const cleanLine = isBullet ? trimmed.replace(/^[*-]\s+/, '') : isNumbered ? trimmed.replace(/^\d+[.)]\s+/, '') : line;
+    const parts = cleanLine.split(/(\*\*[^*]+\*\*)/g);
+    const rendered = parts.map((part, i) => {
+      if (part.startsWith('**') && part.endsWith('**')) {
+        return (
+          <span key={i} className="font-semibold text-ptext">
+            {part.slice(2, -2)}
+          </span>
+        );
+      }
+      return <span key={i}>{part}</span>;
+    });
+
+    if (isBullet) {
       return (
-        <span key={i} className="font-semibold text-ptext">
-          {part.slice(2, -2)}
-        </span>
+        <div key={lineIdx} className="flex items-start gap-2">
+          <span className="mt-1.5 h-1 w-1 flex-shrink-0 rounded-full bg-mtext-2" aria-hidden="true" />
+          <span>{rendered}</span>
+        </div>
       );
     }
-    return <span key={i}>{part}</span>;
+    if (isNumbered) {
+      const num = trimmed.match(/^(\d+)[.)]/)?.[1] || '';
+      return (
+        <div key={lineIdx} className="flex items-start gap-2">
+          <span className="mt-0.5 flex-shrink-0 font-mono text-xs text-mtext">{num}.</span>
+          <span>{rendered}</span>
+        </div>
+      );
+    }
+    if (cleanLine === '') {
+      return <div key={lineIdx} className="h-2" />;
+    }
+    return <div key={lineIdx}>{rendered}</div>;
   });
 }
 
@@ -165,7 +194,7 @@ export default function ChatMessage({ message, onProductClick }: ChatMessageProp
       </div>
       <div className={`max-w-[85%] ${isUser ? 'items-end' : 'items-start'} flex flex-col`}>
         <div
-          className={`px-4 py-3 text-sm leading-relaxed ${
+          className={`px-4 py-3 text-sm leading-relaxed space-y-1 ${
             isUser
               ? 'bg-secondary/10 text-ptext'
               : 'border border-border bg-surface text-stext'

@@ -57,4 +57,9 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
+  .transition-smooth {
+    transition-property: background-color, border-color, color, opacity, transform;
+    transition-duration: 200ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
 }

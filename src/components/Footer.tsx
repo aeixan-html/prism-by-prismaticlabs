@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 export default function Footer() {
   return (
     <footer className="border-t border-border py-8">
@@ -12,18 +14,18 @@ export default function Footer() {
             <span className="text-sm font-bold tracking-tight text-ptext">NOSDIA</span>
           </div>
           <p className="text-xs text-mtext-2">
-            PRISM by NOSDIA. Personalized Retail Intelligence and Sales Manager. Student technology project MVP.
+            PRISM by NOSDIA. Personalized Retail Intelligence and Sales Manager.
           </p>
           <nav aria-label="Footer navigation">
             <ul className="flex items-center gap-4">
               <li>
-                <a href="/" className="text-xs text-mtext-2 transition-colors hover:text-ptext">Home</a>
+                <Link to="/" className="text-xs text-mtext-2 transition-colors hover:text-ptext">Home</Link>
               </li>
               <li>
-                <a href="/privacy" className="text-xs text-mtext-2 transition-colors hover:text-ptext">Privacy</a>
+                <Link to="/privacy" className="text-xs text-mtext-2 transition-colors hover:text-ptext">Privacy</Link>
               </li>
               <li>
-                <a href="/terms" className="text-xs text-mtext-2 transition-colors hover:text-ptext">Terms</a>
+                <Link to="/terms" className="text-xs text-mtext-2 transition-colors hover:text-ptext">Terms</Link>
               </li>
             </ul>
           </nav>
