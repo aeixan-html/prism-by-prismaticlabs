@@ -4,11 +4,12 @@ import MembershipCard from './MembershipCard';
 import { OfferGrid } from './OfferCard';
 import PointsDisplay from './PointsDisplay';
 import PriceMovement from './PriceMovement';
-import { TrendingDown, TrendingUp, Package } from 'lucide-react';
+import { TrendingDown, TrendingUp, Package, RotateCw } from 'lucide-react';
 
 interface ChatMessageProps {
   message: Message;
   onProductClick?: (product: Product) => void;
+  onRetry?: () => void;
 }
 
 function renderFormattedText(text: string) {
@@ -165,7 +166,7 @@ function AttachmentRenderer({ attachment, onProductClick }: { attachment: ChatAt
   }
 }
 
-export default function ChatMessage({ message, onProductClick }: ChatMessageProps) {
+export default function ChatMessage({ message, onProductClick, onRetry }: ChatMessageProps) {
   const isUser = message.role === 'user';
 
   if (message.isProcessing) {
@@ -197,10 +198,21 @@ export default function ChatMessage({ message, onProductClick }: ChatMessageProp
           className={`px-4 py-3 text-sm leading-relaxed space-y-1 ${
             isUser
               ? 'bg-secondary/10 text-ptext'
-              : 'border border-border bg-surface text-stext'
+              : message.isError
+                ? 'border border-accent6/30 bg-accent6/5 text-stext'
+                : 'border border-border bg-surface text-stext'
           }`}
         >
           {renderFormattedText(message.text)}
+          {message.isError && onRetry && (
+            <button
+              onClick={onRetry}
+              className="mt-2 inline-flex items-center gap-1.5 border border-border-2 bg-surface-2 px-3 py-1.5 text-xs font-medium text-ptext transition-smooth hover:border-primary/40 hover:text-primary"
+            >
+              <RotateCw className="h-3 w-3" aria-hidden="true" />
+              Retry
+            </button>
+          )}
         </div>
         {message.attachments?.map((att, i) => (
           <AttachmentRenderer key={i} attachment={att} onProductClick={onProductClick} />

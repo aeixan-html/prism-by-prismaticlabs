@@ -93,4 +93,5 @@ export interface Message {
   text: string;
   attachments?: ChatAttachment[];
   isProcessing?: boolean;
+  isError?: boolean;
 }

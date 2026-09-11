@@ -1,9 +1,9 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
-import { Send, Mic, Sparkles } from 'lucide-react';
+import { Send, Mic, Sparkles, RotateCw } from 'lucide-react';
 import { Section, SectionHeader } from './Section';
 import ChatMessage from './ChatMessage';
 import ProductDetail from './ProductDetail';
-import { processQuery, suggestedPrompts } from '@/data/chatLogic';
+import { suggestedPrompts } from '@/data/chatLogic';
 import type { Message, Product } from '@/data/types';
 
 let messageId = 0;
@@ -44,14 +44,8 @@ export default function ChatInterface() {
   const [input, setInput] = useState('');
   const [isProcessing, setIsProcessing] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    const t = setTimeout(() => setIsLoading(false), 400);
-    return () => clearTimeout(t);
-  }, []);
 
   const scrollToBottom = useCallback(() => {
     if (scrollRef.current) {
@@ -93,11 +87,10 @@ export default function ChatInterface() {
           ),
         );
       } catch {
-        const fallback = processQuery(text);
         setMessages((prev) =>
           prev.map((m) =>
             m.id === processingMsg.id
-              ? { ...m, text: fallback.text, attachments: fallback.attachments, isProcessing: false }
+              ? { ...m, text: 'PRISM couldn\'t reach its AI service right now. Please try again.', isProcessing: false, isError: true }
               : m,
           ),
         );
@@ -106,6 +99,15 @@ export default function ChatInterface() {
     },
     [isProcessing, messages],
   );
+
+  const retryLastMessage = useCallback(() => {
+    const lastUserMsg = [...messages].reverse().find((m) => m.role === 'user');
+    if (lastUserMsg) {
+      const errorMessages = messages.filter((m) => m.isError);
+      setMessages((prev) => prev.filter((m) => !m.isError && !m.isProcessing));
+      sendMessage(lastUserMsg.text);
+    }
+  }, [messages, sendMessage]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -126,7 +128,7 @@ export default function ChatInterface() {
         <SectionHeader
           label="INTERACTIVE DEMO"
           title="Talk to PRISM"
-          description="Try the PRISM conversation interface. PRISM is powered by live AI and can answer questions about products, prices, membership, and offers."
+          description="PRISM is powered by live AI. Ask about products, prices, membership, or offers."
         />
 
         <div className="mx-auto max-w-2xl">
@@ -148,22 +150,9 @@ export default function ChatInterface() {
 
             {/* Messages */}
             <div ref={scrollRef} className="h-[420px] space-y-4 overflow-y-auto bg-bg px-5 py-5" role="log" aria-label="PRISM conversation messages" aria-live="polite">
-              {isLoading ? (
-                <div className="flex items-start gap-3">
-                  <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center bg-primary/15">
-                    <div className="h-3 w-3 rounded-full bg-primary animate-pulse-dot" />
-                  </div>
-                  <div className="flex items-center gap-1 border border-border bg-surface px-4 py-3">
-                    <span className="h-2 w-1 rounded-full bg-primary animate-typing-bounce" style={{ animationDelay: '0s' }} />
-                    <span className="h-2 w-1 rounded-full bg-primary animate-typing-bounce" style={{ animationDelay: '0.15s' }} />
-                    <span className="h-2 w-1 rounded-full bg-primary animate-typing-bounce" style={{ animationDelay: '0.3s' }} />
-                  </div>
-                </div>
-              ) : (
-                messages.map((msg) => (
-                  <ChatMessage key={msg.id} message={msg} onProductClick={handleProductClick} />
-                ))
-              )}
+              {messages.map((msg) => (
+                <ChatMessage key={msg.id} message={msg} onProductClick={handleProductClick} onRetry={msg.isError ? retryLastMessage : undefined} />
+              ))}
             </div>
 
             {/* Suggested prompts */}
