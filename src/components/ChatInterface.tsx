@@ -19,14 +19,9 @@ async function callPrismAI(
   message: string,
   history: { role: 'user' | 'model'; text: string }[],
 ): Promise<string> {
-  const apiUrl = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/prism-chat`;
-  const headers = {
-    Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
-    'Content-Type': 'application/json',
-  };
-  const response = await fetch(apiUrl, {
+  const response = await fetch('/api/prism-chat', {
     method: 'POST',
-    headers,
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ message, history }),
   });
   if (!response.ok) {
