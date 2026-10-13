@@ -9,7 +9,7 @@ const sections = [
   },
   {
     heading: 'Demonstration Project',
-    body: 'PRISM (Personalized Retail Intelligence and Sales Manager) is a student technology project and concept prototype by NOSDIA. This website is a demonstration and does not constitute a commercial product, service, or offering.',
+    body: 'PRISM (Personalized Retail Intelligence and Service Module) is a student technology project and concept prototype by NOSDIA. This website is a demonstration and does not constitute a commercial product, service, or offering.',
   },
   {
     heading: 'Demo Content',

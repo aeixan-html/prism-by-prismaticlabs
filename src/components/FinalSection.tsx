@@ -18,7 +18,7 @@ export default function FinalSection() {
           <div className="h-px w-8 bg-border-2" />
         </div>
         <h2 className="text-hero text-balance text-ptext">P.R.I.S.M.</h2>
-        <p className="mt-3 text-base text-stext md:text-lg">Personalized Retail Intelligence and Sales Manager</p>
+        <p className="mt-3 text-base text-stext md:text-lg">Personalized Retail Intelligence and Service Module</p>
         <p className="mt-6 text-sm leading-relaxed text-mtext-2 md:text-base">
           Building smarter interactions between businesses and their customers.
         </p>

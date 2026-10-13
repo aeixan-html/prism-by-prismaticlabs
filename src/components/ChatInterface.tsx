@@ -19,19 +19,35 @@ async function callPrismAI(
   message: string,
   history: { role: 'user' | 'model'; text: string }[],
 ): Promise<string> {
-  const response = await fetch('/api/prism-chat', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ message, history }),
-  });
-  if (!response.ok) {
-    throw new Error(`Request failed (${response.status})`);
+  const body = JSON.stringify({ message, history });
+
+  const endpoints = [
+    '/api/prism-chat',
+    `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/prism-chat`,
+  ];
+
+  let lastError = '';
+  for (const url of endpoints) {
+    const headers: Record<string, string> = { 'Content-Type': 'application/json' };
+    if (url.includes('supabase.co')) {
+      headers['Authorization'] = `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`;
+    }
+    try {
+      const response = await fetch(url, { method: 'POST', headers, body });
+      if (!response.ok) {
+        lastError = `HTTP ${response.status}`;
+        continue;
+      }
+      const data = await response.json();
+      if (data && typeof data.reply === 'string') {
+        return data.reply;
+      }
+      lastError = 'Invalid response';
+    } catch {
+      lastError = 'Network error';
+    }
   }
-  const data = await response.json();
-  if (!data || typeof data.reply !== 'string') {
-    throw new Error('Invalid response from AI');
-  }
-  return data.reply;
+  throw new Error(lastError || 'All AI endpoints failed');
 }
 
 export default function ChatInterface() {

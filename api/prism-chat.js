@@ -96,19 +96,29 @@ export default async function handler(request, response) {
     return;
   }
 
+  if (message.length > 2000) {
+    sendJson(response, 400, { error: "Message too long (2000 character limit)" });
+    return;
+  }
+
   if (!isValidHistory(history)) {
     sendJson(response, 400, { error: "History must contain user or model messages" });
     return;
   }
 
+  if (history.length > 50) {
+    sendJson(response, 400, { error: "Too many history messages (50 limit)" });
+    return;
+  }
+
   const apiKey = process.env.GEMINI_API_KEY || process.env.ai_key;
   if (!apiKey) {
-    sendJson(response, 500, { error: "AI API key not configured" });
+    sendJson(response, 500, { error: "AI service not configured" });
     return;
   }
 
   const contents = [
-    ...history.map((entry) => ({
+    ...history.slice(-20).map((entry) => ({
       role: entry.role,
       parts: [{ text: entry.text }],
     })),
@@ -119,36 +129,46 @@ export default async function handler(request, response) {
     "gemini-2.0-flash-001",
     "gemini-2.0-flash",
     "gemini-1.5-flash",
-    "gemini-flash-latest",
-    "gemini-1.5-flash-002",
   ];
 
   try {
     let geminiResponse;
+    let lastError = "";
     for (const model of models) {
-      geminiResponse = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            contents,
-            systemInstruction: { parts: [{ text: SYSTEM_PROMPT }] },
-            generationConfig: {
-              temperature: 0.7,
-              maxOutputTokens: 512,
-            },
-          }),
-        },
-      );
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 25000);
+      try {
+        geminiResponse = await fetch(
+          `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`,
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              contents,
+              systemInstruction: { parts: [{ text: SYSTEM_PROMPT }] },
+              generationConfig: {
+                temperature: 0.7,
+                maxOutputTokens: 512,
+              },
+            }),
+            signal: controller.signal,
+          },
+        );
+      } catch (fetchErr) {
+        lastError = fetchErr.name === "AbortError" ? "timeout" : "fetch failed";
+        continue;
+      } finally {
+        clearTimeout(timeout);
+      }
 
       if (geminiResponse.ok) {
         break;
       }
+      lastError = `HTTP ${geminiResponse.status}`;
     }
 
     if (!geminiResponse || !geminiResponse.ok) {
-      sendJson(response, 502, { error: "Gemini API request failed" });
+      sendJson(response, 502, { error: "AI service unavailable" });
       return;
     }
 

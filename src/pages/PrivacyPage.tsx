@@ -5,7 +5,7 @@ import { ArrowLeft } from 'lucide-react';
 const sections = [
   {
     heading: 'Overview',
-    body: 'This website is a demonstration project for PRISM (Personalized Retail Intelligence and Sales Manager), a concept by NOSDIA. This Privacy Policy explains what the website does and does not do.',
+    body: 'This website is a demonstration project for PRISM (Personalized Retail Intelligence and Service Module), a concept by NOSDIA. This Privacy Policy explains what the website does and does not do.',
   },
   {
     heading: 'No Real User Data',
